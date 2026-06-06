@@ -99,7 +99,7 @@ do
   vim.g.maplocalleader = ' '
 
   -- Set to true if you have a Nerd Font installed and selected in the terminal
-  vim.g.have_nerd_font = false
+  vim.g.have_nerd_font = true
 
   -- [[ Setting options ]]
   --  See `:help vim.o`
@@ -516,6 +516,16 @@ do
   vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
   vim.keymap.set('n', '<leader>sc', builtin.commands, { desc = '[S]earch [C]ommands' })
   vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
+  --JOEY EDIT!! 
+  vim.keymap.set('n', '<leader>fd', function() 
+    -- open input prompt
+    vim.ui.input({ prompt = "directory path to search: " }, function(input)
+      -- if the user didn't cancel (input is nil if aborted)
+      if input and input ~= "" then
+        builtin.find_files({cwd = input})
+      end
+    end)
+  end, { desc = "search in given directory" })
 
   -- Add Telescope-based LSP pickers when an LSP attaches to a buffer.
   -- If you later switch picker plugins, this is where to update these mappings.
