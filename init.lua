@@ -477,6 +477,7 @@ do
     gh 'nvim-lua/plenary.nvim',
     gh 'nvim-telescope/telescope.nvim',
     gh 'nvim-telescope/telescope-ui-select.nvim',
+    gh 'nvim-telescope/telescope-file-browser.nvim',  --JOEY EDIT
   }
   if vim.fn.executable 'make' == 1 then table.insert(telescope_plugins, gh 'nvim-telescope/telescope-fzf-native.nvim') end
 
@@ -502,6 +503,7 @@ do
   -- Enable Telescope extensions if they are installed
   pcall(require('telescope').load_extension, 'fzf')
   pcall(require('telescope').load_extension, 'ui-select')
+  pcall(require('telescope').load_extension, 'file_browser') --JOEY EDIT
 
   -- See `:help telescope.builtin`
   local builtin = require 'telescope.builtin'
@@ -517,7 +519,7 @@ do
   vim.keymap.set('n', '<leader>sc', builtin.commands, { desc = '[S]earch [C]ommands' })
   vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
   --JOEY EDIT!! 
-  vim.keymap.set('n', '<leader>fd', function() 
+  vim.keymap.set('n', '<leader>fd', function()
     -- open input prompt
     vim.ui.input({ prompt = "directory path to search: " }, function(input)
       -- if the user didn't cancel (input is nil if aborted)
@@ -526,7 +528,8 @@ do
       end
     end)
   end, { desc = "search in given directory" })
-
+  vim.keymap.set('n', '<leader>si', ':Telescope file_browser<CR>', { desc = '[S]earch File [I]rowser'})
+  --JOEY EDIT END!!
   -- Add Telescope-based LSP pickers when an LSP attaches to a buffer.
   -- If you later switch picker plugins, this is where to update these mappings.
   vim.api.nvim_create_autocmd('LspAttach', {
