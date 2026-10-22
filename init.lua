@@ -8,6 +8,7 @@ callback = function()
 
 --OPTIONS
 require("options")
+require("languages")
 
 -- AUTO COMMANDS
 
