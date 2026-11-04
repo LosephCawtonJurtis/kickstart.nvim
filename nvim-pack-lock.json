@@ -26,6 +26,11 @@
       "rev": "dd3f588bacbeb041be6facf1742e42097f62165d",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
+    "godot.nvim": {
+      "rev": "a383c920e2b3ad00db7435835ca58798d642785a",
+      "src": "https://github.com/lommix/godot.nvim",
+      "version": "'main'"
+    },
     "guess-indent.nvim": {
       "rev": "84a4987ff36798c2fc1169cbaff67960aed9776f",
       "src": "https://github.com/NMAC427/guess-indent.nvim"
